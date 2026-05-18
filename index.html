@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230d9488'/%3E%3Ctext x='50' y='68' font-family='Arial, sans-serif' font-size='55' font-weight='bold' fill='white' text-anchor='middle'%3EYC%3C/text%3E%3C/svg%3E" />
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230d9488'/%3E%3Ctext x='50' y='68' font-family='Arial, sans-serif' font-size='55' font-weight='bold' fill='white' text-anchor='middle'%3EYC%3C/text%3E%3C/svg%3E" />
     <title>Youssef Chaker | Software Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary: #0d9488;
@@ -44,9 +47,11 @@
         ::-webkit-scrollbar {
             width: 8px;
         }
+
         ::-webkit-scrollbar-track {
             background: var(--bg-dark);
         }
+
         ::-webkit-scrollbar-thumb {
             background: var(--primary);
             border-radius: 4px;
@@ -96,7 +101,8 @@
             position: relative;
         }
 
-        .nav-links a:hover, .nav-links a.active {
+        .nav-links a:hover,
+        .nav-links a.active {
             color: var(--primary-light);
         }
 
@@ -111,7 +117,8 @@
             transition: width 0.3s;
         }
 
-        .nav-links a:hover::after, .nav-links a.active::after {
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
             width: 100%;
         }
 
@@ -258,7 +265,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
         }
 
         .hero-card::before {
@@ -498,7 +505,8 @@
             font-size: 0.9rem;
         }
 
-        .filter-btn:hover, .filter-btn.active {
+        .filter-btn:hover,
+        .filter-btn.active {
             background: var(--primary);
             color: white;
             border-color: var(--primary);
@@ -531,7 +539,7 @@
         .project-card:hover {
             border-color: var(--primary);
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .project-header {
@@ -668,7 +676,7 @@
         /* Certificates */
         .certs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 1.5rem;
         }
 
@@ -678,7 +686,7 @@
             border-radius: 12px;
             padding: 1.5rem;
             display: flex;
-            gap: 1rem;
+            flex-direction: column;
             transition: all 0.3s;
             opacity: 0;
             transform: translateY(20px);
@@ -695,17 +703,49 @@
             transform: translateY(-3px);
         }
 
+        .cert-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
         .cert-icon {
-            width: 56px;
-            height: 56px;
-            min-width: 56px;
+            width: 48px;
+            height: 48px;
             background: rgba(13, 148, 136, 0.1);
-            border-radius: 12px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary);
-            font-size: 1.5rem;
+            font-size: 1.25rem;
+        }
+
+        .cert-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .cert-links a {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .cert-links a:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
         }
 
         .cert-content h3 {
@@ -717,11 +757,11 @@
             color: var(--text-secondary);
             font-size: 0.9rem;
             line-height: 1.5;
+            margin-bottom: 0.75rem;
         }
 
         .cert-badge {
             display: inline-block;
-            margin-top: 0.75rem;
             background: rgba(13, 148, 136, 0.1);
             color: var(--primary-light);
             padding: 0.25rem 0.75rem;
@@ -793,15 +833,6 @@
             overflow: hidden;
         }
 
-        .cv-toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            background: var(--bg-dark);
-            border-bottom: 1px solid var(--border);
-        }
-
         .cv-toolbar h3 {
             font-size: 1rem;
             display: flex;
@@ -834,8 +865,9 @@
 
         /* Contact */
         .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.5rem;
             margin-top: 2rem;
         }
@@ -848,6 +880,8 @@
             text-align: center;
             transition: all 0.3s;
             position: relative;
+            width: 280px;
+            flex-shrink: 0;
         }
 
         .card-link {
@@ -876,7 +910,8 @@
             margin-bottom: 0.5rem;
         }
 
-        .contact-card a, .contact-card span {
+        .contact-card a,
+        .contact-card span {
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 0.9rem;
@@ -934,7 +969,9 @@
                 font-size: 2.5rem;
             }
 
-            .hero-badges, .hero-buttons, .social-links {
+            .hero-badges,
+            .hero-buttons,
+            .social-links {
                 justify-content: center;
             }
 
@@ -955,7 +992,8 @@
                 padding-left: 1.5rem;
             }
 
-            .certs-grid, .edu-grid {
+            .certs-grid,
+            .edu-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -970,6 +1008,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -986,8 +1025,37 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        .cert-links {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .cert-links a {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.85rem;
+        }
+
+        .cert-links a:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
+
 <body>
 
     <!-- Navigation -->
@@ -1012,13 +1080,15 @@
     </nav>
 
     <!-- Hero -->
-        <section class="hero" id="home">
+    <section class="hero" id="home">
         <div class="hero-container" style="grid-template-columns: 1fr; text-align: center; max-width: 800px;">
             <div class="hero-content" style="display: flex; flex-direction: column; align-items: center;">
                 <h1>Hi, I'm <span>Youssef Chaker</span></h1>
                 <p class="subtitle">Software Engineer | AI & Full Stack Developer</p>
                 <p class="description" style="margin-left: auto; margin-right: auto;">
-                    Passionate software engineer specializing in Artificial Intelligence, Web Development, and Mobile Development. Experienced in building scalable applications, intelligent systems, and data-driven solutions.
+                    Passionate software engineer specializing in Artificial Intelligence, Web Development, and Mobile
+                    Development. Experienced in building scalable applications, intelligent systems, and data-driven
+                    solutions.
                 </p>
                 <div class="hero-badges" style="justify-content: center;">
                     <span class="badge"><i class="fas fa-robot"></i> AI / ML</span>
@@ -1061,12 +1131,18 @@
                 <span class="timeline-date"><i class="far fa-calendar"></i> 09/2025 – Present</span>
                 <div class="timeline-content">
                     <h3>Back End Engineer</h3>
-                    <div class="company"><i class="fas fa-building"></i> Primini — Price Comparator | Tunisia, Tunis</div>
+                    <div class="company"><i class="fas fa-building"></i> Primini — Price Comparator | Kram Tunis,
+                        Tunisia
+                    </div>
                     <ul>
-                        <li>Maintaining and adding new features to Primini, a price comparator used in Tunisia, Morocco, and Congo</li>
-                        <li>Integrated new e-commerce stores by designing and configuring dynamic scraping schemas in MongoDB</li>
-                        <li>Deployed and managed scraping processes on remote servers via SSH using PM2 and custom automation scripts</li>
-                        <li>Maintained and updated existing store integrations by fixing outdated schemas and improving data accuracy</li>
+                        <li>Maintaining and adding new features to Primini, a price comparator used in Tunisia, Morocco,
+                            and Congo</li>
+                        <li>Integrated new e-commerce stores by designing and configuring dynamic scraping schemas in
+                            MongoDB</li>
+                        <li>Deployed and managed scraping processes on remote servers via SSH using PM2 and custom
+                            automation scripts</li>
+                        <li>Maintained and updated existing store integrations by fixing outdated schemas and improving
+                            data accuracy</li>
                     </ul>
                     <div class="tools">
                         <span class="tool-tag">MongoDB</span>
@@ -1082,7 +1158,8 @@
                 <span class="timeline-date"><i class="far fa-calendar"></i> 11/2024 – Present</span>
                 <div class="timeline-content">
                     <h3>Full Stack Engineer</h3>
-                    <div class="company"><i class="fas fa-building"></i> MagicPrices — Price Comparator | Tunisia, Tunis, Kram</div>
+                    <div class="company"><i class="fas fa-building"></i> MagicPrices — Price Comparator | Kram Tunis,
+                        Tunisia</div>
                     <ul>
                         <li>Developed client-side features using Next.js for the main price comparator platform</li>
                         <li>Built admin dashboard using Angular and Node.js for backend management</li>
@@ -1115,11 +1192,15 @@
             <div class="timeline-item animate-in">
                 <span class="timeline-date"><i class="far fa-calendar"></i> 02/2024 – 07/2024</span>
                 <div class="timeline-content">
-                    <h3>Computer Vision / Video Analytics Engineer</h3>
-                    <div class="company"><i class="fas fa-building"></i> QNB Banking | Tunisia, Tunis, Ariana</div>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; font-style: italic;">End of Studies Engineering Internship</p>
+                    <h3>Computer Vision / Video Analytics Developer</h3>
+                    <div class="company"><i class="fas fa-building"></i> QNB Banking | North Urban Center Tunis, Tunisia
+                    </div>
+                    <p
+                        style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; font-style: italic;">
+                        End of Studies Engineering Internship</p>
                     <ul>
-                        <li>Developed Object/Face Detection Solution Based on the Milestone XProtect Security System</li>
+                        <li>Developed Object/Face Detection Solution Based on the Milestone XProtect Security System
+                        </li>
                         <li>Added a red zone plugin to Milestone XProtect for detecting breaches in critical areas</li>
                         <li>Implemented face detection plugin for detecting faces across different cameras</li>
                         <li>Built object detection plugin for identifying lost objects</li>
@@ -1138,13 +1219,18 @@
                 <span class="timeline-date"><i class="far fa-calendar"></i> 07/2023 – 09/2023</span>
                 <div class="timeline-content">
                     <h3>QA Tester / Python Developer</h3>
-                    <div class="company"><i class="fas fa-building"></i> Capgemini Engineering | Tunisia, Tunis, Technopole El Ghazala</div>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; font-style: italic;">Summer Internship</p>
+                    <div class="company"><i class="fas fa-building"></i> Capgemini Engineering | El Ghazela Technopole
+                        Tunis, Tunisia</div>
+                    <p
+                        style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; font-style: italic;">
+                        Summer Internship</p>
                     <ul>
-                        <li>Engineered a comprehensive Python automation suite to verify and configure AUTOSAR Communication Stack layers</li>
+                        <li>Engineered a comprehensive Python automation suite to verify and configure AUTOSAR
+                            Communication Stack layers</li>
                         <li>Ensured data consistency between Excel-based specifications and XDM configuration files</li>
                         <li>Developed specialized verification tools for CAN, CanIf, COM, PduR, and EcuC layers</li>
-                        <li>Created GUI interfaces and automated Excel reporting to reduce manual validation efforts</li>
+                        <li>Created GUI interfaces and automated Excel reporting to reduce manual validation efforts
+                        </li>
                     </ul>
                     <div class="tools">
                         <span class="tool-tag">Python</span>
@@ -1159,11 +1245,15 @@
                 <span class="timeline-date"><i class="far fa-calendar"></i> 07/2022 – 09/2022</span>
                 <div class="timeline-content">
                     <h3>Business Intelligence Developer</h3>
-                    <div class="company"><i class="fas fa-building"></i> Deltasoft International | Tunisia, Tunis, Ariana</div>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; font-style: italic;">Summer Internship</p>
+                    <div class="company"><i class="fas fa-building"></i> Deltasoft International | Tunisia, Tunis,
+                        Ariana</div>
+                    <p
+                        style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; font-style: italic;">
+                        Summer Internship</p>
                     <ul>
                         <li>Worked on an international cars database project</li>
-                        <li>Created a Power BI application for automating key performance indicators using Microsoft Dynamics</li>
+                        <li>Created a Power BI application for automating key performance indicators using Microsoft
+                            Dynamics</li>
                         <li>Managed Data Warehouses using SSIS, SSAS, and SSRS</li>
                         <li>Created Microsoft Dynamics Pages using AL language</li>
                     </ul>
@@ -1181,8 +1271,11 @@
                 <span class="timeline-date"><i class="far fa-calendar"></i> 02/2021 – 06/2021</span>
                 <div class="timeline-content">
                     <h3>Full Stack Web Developer</h3>
-                    <div class="company"><i class="fas fa-building"></i> Silver International | Tunisia, Tunis, Lac</div>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; font-style: italic;">End of Studies Licence Internship</p>
+                    <div class="company"><i class="fas fa-building"></i> Silver International | Tunisia, Tunis, Lac
+                    </div>
+                    <p
+                        style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; font-style: italic;">
+                        End of Studies Licence Internship</p>
                     <ul>
                         <li>Developed and created a complete E-commerce website</li>
                         <li>Created Front End pages using ReactJS with responsive design</li>
@@ -1220,12 +1313,14 @@
                 <div class="project-header">
                     <div class="project-icon"><i class="fas fa-brain"></i></div>
                     <div class="project-links">
-                        <a href="https://github.com/youssefchaker/Lung-Image-Classifier" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/youssefchaker/Lung-Image-Classifier" target="_blank"
+                            title="View Code"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="project-body">
                     <h3>Lung Image Classifier</h3>
-                    <p>Deep learning-based web application to classify lung X-ray images, aiding in the detection of COVID-19, Pneumonia, and Normal cases using CNN architectures.</p>
+                    <p>Deep learning-based web application to classify lung X-ray images, aiding in the detection of
+                        COVID-19, Pneumonia, and Normal cases using CNN architectures.</p>
                     <div class="project-tags">
                         <span class="project-tag">Python</span>
                         <span class="project-tag">TensorFlow</span>
@@ -1240,12 +1335,14 @@
                 <div class="project-header">
                     <div class="project-icon"><i class="fas fa-cut"></i></div>
                     <div class="project-links">
-                        <a href="https://github.com/youssefchaker/AI-haircut-generator" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/youssefchaker/AI-haircut-generator" target="_blank"
+                            title="View Code"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="project-body">
                     <h3>AI Haircut Generator</h3>
-                    <p>AI-powered web application that generates photorealistic haircut images based on user-specified attributes using a public AI image-generation API.</p>
+                    <p>AI-powered web application that generates photorealistic haircut images based on user-specified
+                        attributes using a public AI image-generation API.</p>
                     <div class="project-tags">
                         <span class="project-tag">Python</span>
                         <span class="project-tag">Flask</span>
@@ -1259,12 +1356,14 @@
                 <div class="project-header">
                     <div class="project-icon"><i class="fas fa-file-invoice"></i></div>
                     <div class="project-links">
-                        <a href="https://github.com/youssefchaker/TimeCard-OCR-Processor" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/youssefchaker/TimeCard-OCR-Processor" target="_blank"
+                            title="View Code"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="project-body">
                     <h3>Time Card OCR Processor</h3>
-                    <p>Python application that automates extraction of structured data from timecard PDFs using OCR, enhancing image quality and converting to CSV format.</p>
+                    <p>Python application that automates extraction of structured data from timecard PDFs using OCR,
+                        enhancing image quality and converting to CSV format.</p>
                     <div class="project-tags">
                         <span class="project-tag">Python</span>
                         <span class="project-tag">Tesseract OCR</span>
@@ -1278,12 +1377,14 @@
                 <div class="project-header">
                     <div class="project-icon"><i class="fas fa-robot"></i></div>
                     <div class="project-links">
-                        <a href="https://github.com/youssefchaker/bot_text-voice_recognition" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/youssefchaker/bot_text-voice_recognition" target="_blank"
+                            title="View Code"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="project-body">
                     <h3>Bot Text-Voice Recognition</h3>
-                    <p>Intelligent bot system with text and voice recognition capabilities for interactive automation and assistance.</p>
+                    <p>Intelligent bot system with text and voice recognition capabilities for interactive automation
+                        and assistance.</p>
                     <div class="project-tags">
                         <span class="project-tag">Python</span>
                         <span class="project-tag">Voice Recognition</span>
@@ -1296,12 +1397,14 @@
                 <div class="project-header">
                     <div class="project-icon"><i class="fas fa-car"></i></div>
                     <div class="project-links">
-                        <a href="https://github.com/youssefchaker/Expert-system-for-choosing-cars" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/youssefchaker/Expert-system-for-choosing-cars" target="_blank"
+                            title="View Code"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="project-body">
                     <h3>Expert System for Choosing Cars</h3>
-                    <p>AI expert system that recommends suitable cars based on user preferences and criteria using rule-based reasoning.</p>
+                    <p>AI expert system that recommends suitable cars based on user preferences and criteria using
+                        rule-based reasoning.</p>
                     <div class="project-tags">
                         <span class="project-tag">Python</span>
                         <span class="project-tag">Expert Systems</span>
@@ -1315,12 +1418,14 @@
                 <div class="project-header">
                     <div class="project-icon"><i class="fab fa-youtube"></i></div>
                     <div class="project-links">
-                        <a href="https://github.com/youssefchaker/Youtube-Clipper-V2" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/youssefchaker/Youtube-Clipper-V2" target="_blank"
+                            title="View Code"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="project-body">
                     <h3>YouTube Clipper V2</h3>
-                    <p>Advanced tool for clipping and processing YouTube video content with enhanced features and user interface.</p>
+                    <p>Advanced tool for clipping and processing YouTube video content with enhanced features and user
+                        interface.</p>
                     <div class="project-tags">
                         <span class="project-tag">JavaScript</span>
                         <span class="project-tag">Web APIs</span>
@@ -1333,12 +1438,14 @@
                 <div class="project-header">
                     <div class="project-icon"><i class="fas fa-utensils"></i></div>
                     <div class="project-links">
-                        <a href="https://github.com/youssefchaker/Restaurant-web-application" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/youssefchaker/Restaurant-web-application" target="_blank"
+                            title="View Code"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="project-body">
                     <h3>Restaurant Web Application</h3>
-                    <p>Modern restaurant website built with Angular featuring menu management, reservation system, and responsive design.</p>
+                    <p>Modern restaurant website built with Angular featuring menu management, reservation system, and
+                        responsive design.</p>
                     <div class="project-tags">
                         <span class="project-tag">Angular</span>
                         <span class="project-tag">TypeScript</span>
@@ -1351,12 +1458,14 @@
                 <div class="project-header">
                     <div class="project-icon"><i class="fas fa-shopping-cart"></i></div>
                     <div class="project-links">
-                        <a href="https://github.com/youssefchaker/Retro-Game-Store" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/youssefchaker/Retro-Game-Store" target="_blank" title="View Code"><i
+                                class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="project-body">
                     <h3>Retro Game Store</h3>
-                    <p>Front-end web application for a retro games store with nostalgic design and product showcase features.</p>
+                    <p>Front-end web application for a retro games store with nostalgic design and product showcase
+                        features.</p>
                     <div class="project-tags">
                         <span class="project-tag">EJS</span>
                         <span class="project-tag">Node.js</span>
@@ -1369,16 +1478,8 @@
                 <div class="project-header">
                     <div class="project-icon"><i class="fas fa-shopping-bag"></i></div>
                     <div class="project-links">
-                        <a href="https://github.com/youssefchaker/Centre_E-comerce_PFE" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="project-body">
-                    <h3>Centre E-commerce PFE</h3>
-                    <p>End-of-studies project for an e-commerce platform with full shopping functionality and admin management.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">CSS</span>
-                        <span class="project-tag">Web</span>
-                        <span class="project-tag">E-commerce</span>
+                        <a href="https://github.com/youssefchaker/Centre_E-comerce_PFE" target="_blank"
+                            title="View Code"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
             </div>
@@ -1387,12 +1488,14 @@
                 <div class="project-header">
                     <div class="project-icon"><i class="fas fa-music"></i></div>
                     <div class="project-links">
-                        <a href="https://github.com/youssefchaker/YouTube-Audio-Downloader" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/youssefchaker/YouTube-Audio-Downloader" target="_blank"
+                            title="View Code"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="project-body">
                     <h3>YouTube Audio Downloader</h3>
-                    <p>Python utility for downloading and processing audio from YouTube videos with format conversion options.</p>
+                    <p>Python utility for downloading and processing audio from YouTube videos with format conversion
+                        options.</p>
                     <div class="project-tags">
                         <span class="project-tag">Python</span>
                         <span class="project-tag">Audio Processing</span>
@@ -1405,12 +1508,14 @@
                 <div class="project-header">
                     <div class="project-icon"><i class="fab fa-instagram"></i></div>
                     <div class="project-links">
-                        <a href="https://github.com/youssefchaker/insta_content_manager" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/youssefchaker/insta_content_manager" target="_blank"
+                            title="View Code"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="project-body">
                     <h3>Instagram Content Manager</h3>
-                    <p>Flask-based web application to automate and schedule Instagram content publishing with background scheduler and content queue.</p>
+                    <p>Flask-based web application to automate and schedule Instagram content publishing with background
+                        scheduler and content queue.</p>
                     <div class="project-tags">
                         <span class="project-tag">Python</span>
                         <span class="project-tag">Flask</span>
@@ -1424,7 +1529,8 @@
                 <div class="project-header">
                     <div class="project-icon"><i class="fas fa-robot"></i></div>
                     <div class="project-links">
-                        <a href="https://github.com/youssefchaker/Instagram-bot-automation" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/youssefchaker/Instagram-bot-automation" target="_blank"
+                            title="View Code"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="project-body">
@@ -1443,12 +1549,14 @@
                 <div class="project-header">
                     <div class="project-icon"><i class="fas fa-radio"></i></div>
                     <div class="project-links">
-                        <a href="https://github.com/youssefchaker/Radio-Hub-TN" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/youssefchaker/Radio-Hub-TN" target="_blank" title="View Code"><i
+                                class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="project-body">
                     <h3>Radio Hub TN</h3>
-                    <p>Flutter application serving as a centralized hub for Tunisian radio stations with live audio and video streaming.</p>
+                    <p>Flutter application serving as a centralized hub for Tunisian radio stations with live audio and
+                        video streaming.</p>
                     <div class="project-tags">
                         <span class="project-tag">Flutter</span>
                         <span class="project-tag">Firebase</span>
@@ -1462,12 +1570,14 @@
                 <div class="project-header">
                     <div class="project-icon"><i class="fas fa-globe"></i></div>
                     <div class="project-links">
-                        <a href="https://github.com/youssefchaker/Country-Surfing" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/youssefchaker/Country-Surfing" target="_blank" title="View Code"><i
+                                class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="project-body">
                     <h3>Country Surfing</h3>
-                    <p>Educational Flutter app for testing and improving knowledge of global geography through interactive quizzes and timed challenges.</p>
+                    <p>Educational Flutter app for testing and improving knowledge of global geography through
+                        interactive quizzes and timed challenges.</p>
                     <div class="project-tags">
                         <span class="project-tag">Flutter</span>
                         <span class="project-tag">Dart</span>
@@ -1482,12 +1592,14 @@
                 <div class="project-header">
                     <div class="project-icon"><i class="fas fa-home"></i></div>
                     <div class="project-links">
-                        <a href="https://github.com/youssefchaker/Smart-House-Simulation" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/youssefchaker/Smart-House-Simulation" target="_blank"
+                            title="View Code"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="project-body">
                     <h3>Smart House Simulation</h3>
-                    <p>Java-based simulation of a smart home system with automated controls and IoT device management.</p>
+                    <p>Java-based simulation of a smart home system with automated controls and IoT device management.
+                    </p>
                     <div class="project-tags">
                         <span class="project-tag">Java</span>
                         <span class="project-tag">IoT</span>
@@ -1495,30 +1607,12 @@
                     </div>
                 </div>
             </div>
-
-            <div class="project-card" data-category="other">
-                <div class="project-header">
-                    <div class="project-icon"><i class="fas fa-cogs"></i></div>
-                    <div class="project-links">
-                        <a href="https://github.com/youssefchaker/Automating-The-StackCom-Layer-Configuration" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="project-body">
-                    <h3>Automating StackCom Layer Configuration</h3>
-                    <p>Automation suite for configuring and verifying automotive communication stack layers with GUI interfaces.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">Python</span>
-                        <span class="project-tag">AUTOSAR</span>
-                        <span class="project-tag">Automation</span>
-                    </div>
-                </div>
-            </div>
-
             <div class="project-card" data-category="other">
                 <div class="project-header">
                     <div class="project-icon"><i class="fas fa-microchip"></i></div>
                     <div class="project-links">
-                        <a href="https://github.com/youssefchaker/mini-CNC-plotte-machine" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/youssefchaker/mini-CNC-plotte-machine" target="_blank"
+                            title="View Code"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="project-body">
@@ -1536,7 +1630,8 @@
                 <div class="project-header">
                     <div class="project-icon"><i class="fas fa-calendar-alt"></i></div>
                     <div class="project-links">
-                        <a href="https://github.com/youssefchaker/seminars-management-application" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/youssefchaker/seminars-management-application" target="_blank"
+                            title="View Code"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="project-body">
@@ -1554,12 +1649,14 @@
                 <div class="project-header">
                     <div class="project-icon"><i class="fas fa-sitemap"></i></div>
                     <div class="project-links">
-                        <a href="https://github.com/youssefchaker/Dictionary_Tree_Project" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/youssefchaker/Dictionary_Tree_Project" target="_blank"
+                            title="View Code"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="project-body">
                     <h3>Dictionary Tree Project</h3>
-                    <p>C-based implementation of dictionary data structure using tree algorithms for efficient word storage and retrieval.</p>
+                    <p>C-based implementation of dictionary data structure using tree algorithms for efficient word
+                        storage and retrieval.</p>
                     <div class="project-tags">
                         <span class="project-tag">C</span>
                         <span class="project-tag">Data Structures</span>
@@ -1572,12 +1669,14 @@
                 <div class="project-header">
                     <div class="project-icon"><i class="fas fa-tasks"></i></div>
                     <div class="project-links">
-                        <a href="https://github.com/youssefchaker/process-scheduling-using-different-algorithms" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/youssefchaker/process-scheduling-using-different-algorithms"
+                            target="_blank" title="View Code"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="project-body">
                     <h3>Process Scheduling Algorithms</h3>
-                    <p>C implementation of various CPU process scheduling algorithms with visualization and comparison features.</p>
+                    <p>C implementation of various CPU process scheduling algorithms with visualization and comparison
+                        features.</p>
                     <div class="project-tags">
                         <span class="project-tag">C</span>
                         <span class="project-tag">OS</span>
@@ -1590,12 +1689,14 @@
                 <div class="project-header">
                     <div class="project-icon"><i class="fas fa-thermometer-half"></i></div>
                     <div class="project-links">
-                        <a href="https://github.com/youssefchaker/temparture-and-humidity-showcase" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/youssefchaker/temparture-and-humidity-showcase" target="_blank"
+                            title="View Code"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="project-body">
                     <h3>Temperature & Humidity Showcase</h3>
-                    <p>IoT dashboard for displaying real-time temperature and humidity sensor data with visual charts.</p>
+                    <p>IoT dashboard for displaying real-time temperature and humidity sensor data with visual charts.
+                    </p>
                     <div class="project-tags">
                         <span class="project-tag">JavaScript</span>
                         <span class="project-tag">IoT</span>
@@ -1695,16 +1796,6 @@
                 </div>
             </div>
             <div class="skill-category animate-in">
-                <h3><i class="fas fa-car"></i> Automotive & Embedded</h3>
-                <div class="skill-list">
-                    <span class="skill-item">AUTOSAR</span>
-                    <span class="skill-item">CAN</span>
-                    <span class="skill-item">StackCom Validation</span>
-                    <span class="skill-item">Nvidia CUDA</span>
-                    <span class="skill-item">Milestone XProtect</span>
-                </div>
-            </div>
-            <div class="skill-category animate-in">
                 <h3><i class="fas fa-laptop-code"></i> Programming Languages</h3>
                 <div class="skill-list">
                     <span class="skill-item">Python</span>
@@ -1730,27 +1821,114 @@
         </div>
         <div class="certs-grid">
             <div class="cert-card animate-in">
-                <div class="cert-icon"><i class="fab fa-microsoft"></i></div>
+                <div class="cert-header">
+                    <div class="cert-icon"><i class="fas fa-brain"></i></div>
+                    <div class="cert-links">
+                        <a href="https://www.credly.com/badges/37b86957-f10b-415b-b215-e3e15ec1ade1/public_url"
+                            target="_blank" title="View Certificate"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
                 <div class="cert-content">
                     <h3>Microsoft Certified: Azure AI Fundamentals</h3>
-                    <p>Machine Learning (ML) and Artificial Intelligence (AI) concepts and related Microsoft Azure services.</p>
+                    <p>Machine Learning (ML) and Artificial Intelligence (AI) concepts and related Microsoft Azure
+                        services.</p>
                     <span class="cert-badge">Microsoft</span>
                 </div>
             </div>
+
             <div class="cert-card animate-in">
-                <div class="cert-icon"><i class="fab fa-microsoft"></i></div>
+                <div class="cert-header">
+                    <div class="cert-icon"><i class="fab fa-microsoft"></i></div>
+                    <div class="cert-links">
+                        <a href="https://www.credly.com/badges/3eb82dda-d0e0-4e5f-8def-38dd9c36cb0c/public_url"
+                            target="_blank" title="View Certificate"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
                 <div class="cert-content">
                     <h3>Microsoft Certified: Power Platform Fundamentals</h3>
-                    <p>Automating business processes, analyzing data to produce business insights, and creating simple app experiences.</p>
+                    <p>Automating business processes, analyzing data to produce business insights, and creating simple
+                        app experiences.</p>
                     <span class="cert-badge">Microsoft</span>
                 </div>
             </div>
+
             <div class="cert-card animate-in">
-                <div class="cert-icon"><i class="fas fa-graduation-cap"></i></div>
+                <div class="cert-header">
+                    <div class="cert-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="cert-links">
+                        <a href="https://www.coursera.org/account/accomplishments/specialization/LVWMQR8VWZFV?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=s12n"
+                            target="_blank" title="View Certificate"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
                 <div class="cert-content">
                     <h3>Machine Learning Specialization</h3>
-                    <p>Supervised Machine Learning (Regression & Classification), Advanced Learning Algorithms, Unsupervised Learning, Recommenders, Reinforcement Learning.</p>
-                    <span class="cert-badge">Coursera / Stanford</span>
+                    <p>Supervised & Unsupervised Learning, Advanced Algorithms, Recommenders, and Reinforcement
+                        Learning.</p>
+                    <span class="cert-badge">Stanford / DeepLearning.AI</span>
+                </div>
+            </div>
+
+            <div class="cert-card animate-in">
+                <div class="cert-header">
+                    <div class="cert-icon"><i class="fas fa-database"></i></div>
+                    <div class="cert-links">
+                        <a href="https://www.credly.com/badges/b25378d3-f4a3-41f6-971e-7ecedf8e9de7/public_url"
+                            target="_blank" title="View Certificate"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="cert-content">
+                    <h3>Microsoft Azure Data Fundamentals</h3>
+                    <p>Core data concepts and how they are implemented using Microsoft Azure data services and cloud
+                        solutions.</p>
+                    <span class="cert-badge">Microsoft</span>
+                </div>
+            </div>
+
+            <div class="cert-card animate-in">
+                <div class="cert-header">
+                    <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="cert-links">
+                        <a href="https://www.credly.com/badges/21612fc3-4392-460c-a84f-e99282250f86/public_url"
+                            target="_blank" title="View Certificate"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="cert-content">
+                    <h3>Microsoft Certified: Security, Compliance, and Identity Fundamentals</h3>
+                    <p>Security, compliance, and identity concepts across cloud-based and related Microsoft services.
+                    </p>
+                    <span class="cert-badge">Microsoft</span>
+                </div>
+            </div>
+
+            <div class="cert-card animate-in">
+                <div class="cert-header">
+                    <div class="cert-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="cert-links">
+                        <a href="https://www.credly.com/badges/e8ee8cbd-14df-451b-8576-22fc0dbf975c/public_url"
+                            target="_blank" title="View Certificate"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="cert-content">
+                    <h3>Microsoft Dynamics 365 Fundamentals (ERP)</h3>
+                    <p>Finance and Operations Apps — ERP fundamentals including financial management and supply chain
+                        concepts.</p>
+                    <span class="cert-badge">Microsoft</span>
+                </div>
+            </div>
+
+            <div class="cert-card animate-in">
+                <div class="cert-header">
+                    <div class="cert-icon"><i class="fab fa-java"></i></div>
+                    <div class="cert-links">
+                        <a href="https://www.coursera.org/account/accomplishments/certificate/J9DNFBP2VCRQ"
+                            target="_blank" title="View Certificate"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="cert-content">
+                    <h3>Java for Android</h3>
+                    <p>Java programming fundamentals for Android mobile application development by Vanderbilt
+                        University.</p>
+                    <span class="cert-badge">Vanderbilt</span>
                 </div>
             </div>
         </div>
@@ -1767,18 +1945,33 @@
             <div class="edu-card animate-in">
                 <div class="edu-date"><i class="far fa-calendar"></i> 2021 – 2024</div>
                 <h3>Software Engineering in Computer Science</h3>
-                <div class="edu-school"><i class="fas fa-university"></i> Higher Institute Of Computer Science, Ariana — Tunis</div>
-                <p class="edu-desc">National Diploma in Software Development Engineering. Curriculum covers programming, algorithms, data structures, computer architecture, software development, hands-on projects, labs, workshops and internships.</p>
+                <div class="edu-school"><i class="fas fa-university"></i> Higher Institute Of Computer Science, Ariana —
+                    Tunis</div>
+                <p class="edu-desc">National Diploma in Software Development Engineering. Curriculum covers programming,
+                    algorithms, data structures, computer architecture, software development, hands-on projects, labs,
+                    workshops and internships.</p>
             </div>
             <div class="edu-card animate-in">
                 <div class="edu-date"><i class="far fa-calendar"></i> 2018 – 2021</div>
                 <h3>Fundamental Licence in Computer Science</h3>
-                <div class="edu-school"><i class="fas fa-university"></i> Higher Institute Of Computer Science, Ariana — Tunis</div>
-                <p class="edu-desc">Fundamental degree covering mathematics, computer science, algorithms, data structures, principles of computing and technical courses, with hands-on experience in internships and projects.</p>
+                <div class="edu-school"><i class="fas fa-university"></i> Higher Institute Of Computer Science, Ariana —
+                    Tunis</div>
+                <p class="edu-desc">Fundamental degree covering mathematics, computer science, algorithms, data
+                    structures, principles of computing and technical courses, with hands-on experience in internships
+                    and projects.</p>
+            </div>
+            <div class="edu-card animate-in">
+                <div class="edu-date"><i class="far fa-calendar"></i> 2017 - 2018</div>
+                <h3> Natural Science Baccalaureate</h3>
+                <div class="edu-school"><i class="fas fa-university"></i> Kheireddine Pacha Highschool</div>
+                <p class="edu-desc">Natural sciences baccalaureate with a rigorous curriculum in biology, chemistry,
+                    physics, and mathematics. Built a solid scientific foundation and critical thinking skills that
+                    paved the way for computer science and engineering studies.</p>
             </div>
         </div>
     </section>
 
+    <!-- CV View -->
     <!-- CV View -->
     <section id="cv">
         <div class="section-header animate-in">
@@ -1786,13 +1979,15 @@
             <p>View or download my complete CV</p>
             <div class="section-line"></div>
         </div>
+
+        <div style="text-align: center; margin-bottom: 1.5rem;" class="animate-in">
+            <a href="./Youssef_Chaker_CV.pdf" download class="btn btn-primary"
+                style="padding: 0.875rem 2rem; font-size: 1rem;">
+                <i class="fas fa-download"></i> Download CV
+            </a>
+        </div>
+
         <div class="cv-container animate-in">
-            <div class="cv-toolbar">
-                <h3><i class="fas fa-file-alt"></i> Youssef_Chaker_CV.pdf</h3>
-                <a href="./Youssef_Chaker_CV.pdf" download class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">
-                    <i class="fas fa-download"></i> Download CV
-                </a>
-            </div>
             <iframe class="cv-frame" src="./Youssef_Chaker_CV.pdf" title="Youssef Chaker CV">
                 <div class="cv-fallback">
                     <i class="fas fa-file-pdf"></i>
@@ -1800,9 +1995,14 @@
                 </div>
             </iframe>
         </div>
+
+        <p style="text-align: center; color: var(--text-muted); margin-top: 1rem; font-size: 0.9rem;">
+            <i class="fas fa-info-circle"></i> Make sure to upload your CV PDF file as <code
+                style="background: var(--bg-card); padding: 0.2rem 0.5rem; border-radius: 4px;">Youssef_Chaker_CV.pdf</code>
+            in the same folder as this HTML file.
+        </p>
     </section>
 
-    <!-- Contact -->
     <!-- Contact -->
     <section id="contact">
         <div class="section-header animate-in">
@@ -1831,15 +2031,6 @@
             </div>
         </div>
     </section>
-    <!-- Footer -->
-    <footer>
-        <div class="social-links">
-            <a href="https://github.com/youssefchaker" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/in/youssef-chaker-529097175" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-            <a href="mailto:youssefchaker13@gmail.com"><i class="fas fa-envelope"></i></a>
-        </div>
-        <p>  Youssef Chaker. Built with <i class="fas fa-heart" style="color: var(--primary);"></i> and deployed on GitHub Pages.</p>
-    </footer>
 
     <script>
         // Mobile menu toggle
@@ -1935,4 +2126,5 @@
         });
     </script>
 </body>
+
 </html>
