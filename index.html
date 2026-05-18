@@ -1237,8 +1237,9 @@
                 <span class="timeline-date"><i class="far fa-calendar"></i> 07/2022 – 09/2022</span>
                 <div class="timeline-content">
                     <h3>Business Intelligence Developer</h3>
-                    <div class="company"><i class="fas fa-building"></i> Deltasoft International | Tunisia, Tunis,
-                        Ariana</div>
+                    <div class="company"><i class="fas fa-building"></i> Deltasoft International | Ariana, Tunis,
+                        Tunisia
+                    </div>
                     <p
                         style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; font-style: italic;">
                         Summer Internship</p>
@@ -1479,7 +1480,7 @@
                     <div class="project-tags">
                         <span class="project-tag">Python</span>
                         <span class="project-tag">Audio Processing</span>
-                        <span class="project-tag">Playwright</span>
+                        <span class="project-tag">FFmpeg</span>
                     </div>
                 </div>
             </div>
@@ -1734,7 +1735,6 @@
                     <span class="skill-item">Provider</span>
                     <span class="skill-item">BLoC</span>
                     <span class="skill-item">Firebase</span>
-                    <span class="skill-item">Just Audio</span>
                 </div>
             </div>
             <div class="skill-category animate-in">
@@ -1779,7 +1779,9 @@
                     <span class="skill-item">JavaScript</span>
                     <span class="skill-item">Java</span>
                     <span class="skill-item">C</span>
+                    <span class="skill-item">C++</span>
                     <span class="skill-item">C#</span>
+                    <span class="skill-item">R</span>
                     <span class="skill-item">Dart</span>
                     <span class="skill-item">TypeScript</span>
                 </div>
@@ -2033,8 +2035,12 @@
 
         // Close mobile menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', (e) => {
                 document.getElementById('navLinks').classList.remove('active');
+
+                // Immediately set clicked link as active
+                navLinks.forEach(l => l.classList.remove('active'));
+                e.target.classList.add('active');
             });
         });
 
@@ -2042,15 +2048,29 @@
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-links a');
 
-        window.addEventListener('scroll', () => {
+        function updateActiveNav() {
+            const scrollY = window.scrollY;
+            const viewportBottom = scrollY + window.innerHeight;
+            const pageBottom = document.body.offsetHeight;
+
             let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
+
+            // If we're near the very bottom of the page, force Contact as active
+            if (viewportBottom >= pageBottom - 150) {
+                current = 'contact';
+            } else {
+                // Otherwise find which section is in the middle of the viewport
+                const viewportCenter = scrollY + (window.innerHeight / 3);
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionBottom = sectionTop + section.clientHeight;
+
+                    if (viewportCenter >= sectionTop && viewportCenter < sectionBottom) {
+                        current = section.getAttribute('id');
+                    }
+                });
+            }
 
             navLinks.forEach(link => {
                 link.classList.remove('active');
@@ -2066,7 +2086,11 @@
             } else {
                 navbar.style.boxShadow = 'none';
             }
-        });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        window.addEventListener('resize', updateActiveNav);
+        window.addEventListener('load', updateActiveNav);
 
         // Intersection Observer for animations
         const observerOptions = {
