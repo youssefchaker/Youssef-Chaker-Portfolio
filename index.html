@@ -1,0 +1,1949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youssef Chaker | Software Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d9488;
+            --primary-dark: #0f766e;
+            --primary-light: #14b8a6;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #26354f;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #334155;
+            --gradient: linear-gradient(135deg, #0d9488 0%, #0891b2 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-light);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-light);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(13, 148, 136, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero-content h1 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero-content .description {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: all 0.3s;
+        }
+
+        .badge:hover {
+            border-color: var(--primary);
+            color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(13, 148, 136, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(13, 148, 136, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary-light);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-card {
+            width: 320px;
+            height: 320px;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .hero-card i {
+            font-size: 5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .hero-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-header h2 i {
+            color: var(--primary);
+            font-size: 2rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-line {
+            width: 60px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 3rem;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid var(--bg-dark);
+            margin-left: -5px;
+            box-shadow: 0 0 0 3px var(--primary);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            background: var(--bg-card);
+            color: var(--primary-light);
+            padding: 0.35rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            border: 1px solid var(--border);
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .timeline-content:hover {
+            border-color: var(--primary);
+            transform: translateX(5px);
+            background: var(--bg-card-hover);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+        }
+
+        .timeline-content .company {
+            color: var(--primary-light);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content ul li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .timeline-content ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tool-tag {
+            background: rgba(13, 148, 136, 0.1);
+            color: var(--primary-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(13, 148, 136, 0.2);
+        }
+
+        /* Projects */
+        .projects-filter {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.6rem 1.25rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.5s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .project-header {
+            padding: 1.5rem 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .project-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(13, 148, 136, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .project-links a {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: var(--bg-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .project-links a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .project-body {
+            padding: 1rem 1.5rem 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-body h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-body p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 1rem;
+        }
+
+        .project-tag {
+            background: var(--bg-dark);
+            color: var(--text-muted);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .skill-category:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--primary-light);
+        }
+
+        .skill-category h3 i {
+            font-size: 1.25rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            background: var(--bg-dark);
+            color: var(--text-secondary);
+            padding: 0.4rem 0.9rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .skill-item:hover {
+            border-color: var(--primary);
+            color: var(--primary-light);
+        }
+
+        /* Certificates */
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .cert-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .cert-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.5s ease;
+        }
+
+        .cert-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .cert-icon {
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
+            background: rgba(13, 148, 136, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .cert-content h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .cert-badge {
+            display: inline-block;
+            margin-top: 0.75rem;
+            background: rgba(13, 148, 136, 0.1);
+            color: var(--primary-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Education */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .edu-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .edu-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.5s ease;
+        }
+
+        .edu-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .edu-date {
+            color: var(--primary-light);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-school {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .edu-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* CV Section */
+        .cv-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .cv-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: var(--bg-dark);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cv-toolbar h3 {
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cv-toolbar h3 i {
+            color: var(--primary);
+        }
+
+        .cv-frame {
+            width: 100%;
+            height: 700px;
+            border: none;
+            background: white;
+        }
+
+        .cv-fallback {
+            padding: 3rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .cv-fallback i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a, .contact-card span {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .contact-card a:hover {
+            color: var(--primary-light);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer .social-links {
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-dark);
+                flex-direction: column;
+                padding: 1rem 2rem;
+                border-bottom: 1px solid var(--border);
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-badges, .hero-buttons, .social-links {
+                justify-content: center;
+            }
+
+            .hero-card {
+                width: 250px;
+                height: 250px;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.75rem;
+            }
+
+            .timeline {
+                padding-left: 1.5rem;
+            }
+
+            .certs-grid, .edu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cv-frame {
+                height: 500px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">YC.</a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#internships">Internships</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#cv">CV</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Hi, I'm <span>Youssef Chaker</span></h1>
+                <p class="subtitle">Software Engineer | AI & Full Stack Developer</p>
+                <p class="description">
+                    Passionate software engineer specializing in Artificial Intelligence, Web Development, and Mobile Development. Experienced in building scalable applications, intelligent systems, and data-driven solutions.
+                </p>
+                <div class="hero-badges">
+                    <span class="badge"><i class="fas fa-robot"></i> AI / ML</span>
+                    <span class="badge"><i class="fas fa-code"></i> Full Stack</span>
+                    <span class="badge"><i class="fas fa-mobile-alt"></i> Mobile</span>
+                    <span class="badge"><i class="fas fa-database"></i> Data & BI</span>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#experience" class="btn btn-primary">
+                        <i class="fas fa-briefcase"></i> View My Work
+                    </a>
+                    <a href="#cv" class="btn btn-outline">
+                        <i class="fas fa-file-pdf"></i> View CV
+                    </a>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/youssefchaker" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/youssef-chaker-529097175" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="mailto:youssefchaker13@gmail.com" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Youssef Chaker</h3>
+                    <p>Software Engineer</p>
+                    <div style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">
+                        <i class="fas fa-map-marker-alt"></i> Tunis, Ariana, Tunisia
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section id="experience">
+        <div class="section-header animate-in">
+            <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
+            <p>My career journey and professional roles</p>
+            <div class="section-line"></div>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item animate-in">
+                <span class="timeline-date"><i class="far fa-calendar"></i> 09/2025 – Present</span>
+                <div class="timeline-content">
+                    <h3>Back End Engineer</h3>
+                    <div class="company"><i class="fas fa-building"></i> Primini — Price Comparator | Tunisia, Tunis</div>
+                    <ul>
+                        <li>Maintaining and adding new features to Primini, a price comparator used in Tunisia, Morocco, and Congo</li>
+                        <li>Integrated new e-commerce stores by designing and configuring dynamic scraping schemas in MongoDB</li>
+                        <li>Deployed and managed scraping processes on remote servers via SSH using PM2 and custom automation scripts</li>
+                        <li>Maintained and updated existing store integrations by fixing outdated schemas and improving data accuracy</li>
+                    </ul>
+                    <div class="tools">
+                        <span class="tool-tag">MongoDB</span>
+                        <span class="tool-tag">Node.js</span>
+                        <span class="tool-tag">Python</span>
+                        <span class="tool-tag">JavaScript</span>
+                        <span class="tool-tag">PM2</span>
+                        <span class="tool-tag">SSH</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item animate-in">
+                <span class="timeline-date"><i class="far fa-calendar"></i> 11/2024 – Present</span>
+                <div class="timeline-content">
+                    <h3>Full Stack Engineer</h3>
+                    <div class="company"><i class="fas fa-building"></i> MagicPrices — Price Comparator | Tunisia, Tunis, Kram</div>
+                    <ul>
+                        <li>Developed client-side features using Next.js for the main price comparator platform</li>
+                        <li>Built admin dashboard using Angular and Node.js for backend management</li>
+                        <li>Created and managed RESTful APIs using JavaScript for the main project</li>
+                        <li>Designed automation workflows using n8n for project-related tasks</li>
+                    </ul>
+                    <div class="tools">
+                        <span class="tool-tag">Next.js</span>
+                        <span class="tool-tag">Angular</span>
+                        <span class="tool-tag">JavaScript</span>
+                        <span class="tool-tag">Node.js</span>
+                        <span class="tool-tag">MongoDB</span>
+                        <span class="tool-tag">n8n</span>
+                        <span class="tool-tag">Docker</span>
+                        <span class="tool-tag">GitLab</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Internships -->
+    <section id="internships">
+        <div class="section-header animate-in">
+            <h2><i class="fas fa-user-graduate"></i> Internships</h2>
+            <p>Hands-on experience across diverse domains</p>
+            <div class="section-line"></div>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item animate-in">
+                <span class="timeline-date"><i class="far fa-calendar"></i> 02/2024 – 07/2024</span>
+                <div class="timeline-content">
+                    <h3>Computer Vision / Video Analytics Engineer</h3>
+                    <div class="company"><i class="fas fa-building"></i> QNB Banking | Tunisia, Tunis, Ariana</div>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; font-style: italic;">End of Studies Engineering Internship</p>
+                    <ul>
+                        <li>Developed Object/Face Detection Solution Based on the Milestone XProtect Security System</li>
+                        <li>Added a red zone plugin to Milestone XProtect for detecting breaches in critical areas</li>
+                        <li>Implemented face detection plugin for detecting faces across different cameras</li>
+                        <li>Built object detection plugin for identifying lost objects</li>
+                    </ul>
+                    <div class="tools">
+                        <span class="tool-tag">YOLO</span>
+                        <span class="tool-tag">Roboflow</span>
+                        <span class="tool-tag">Python</span>
+                        <span class="tool-tag">Docker</span>
+                        <span class="tool-tag">Milestone XProtect</span>
+                        <span class="tool-tag">Nvidia CUDA</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item animate-in">
+                <span class="timeline-date"><i class="far fa-calendar"></i> 07/2023 – 09/2023</span>
+                <div class="timeline-content">
+                    <h3>QA Tester / Python Developer</h3>
+                    <div class="company"><i class="fas fa-building"></i> Capgemini Engineering | Tunisia, Tunis, Technopole El Ghazala</div>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; font-style: italic;">Summer Internship</p>
+                    <ul>
+                        <li>Engineered a comprehensive Python automation suite to verify and configure AUTOSAR Communication Stack layers</li>
+                        <li>Ensured data consistency between Excel-based specifications and XDM configuration files</li>
+                        <li>Developed specialized verification tools for CAN, CanIf, COM, PduR, and EcuC layers</li>
+                        <li>Created GUI interfaces and automated Excel reporting to reduce manual validation efforts</li>
+                    </ul>
+                    <div class="tools">
+                        <span class="tool-tag">Python</span>
+                        <span class="tool-tag">Tkinter</span>
+                        <span class="tool-tag">AUTOSAR</span>
+                        <span class="tool-tag">Automotive Configuration</span>
+                        <span class="tool-tag">StackCom Validation</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item animate-in">
+                <span class="timeline-date"><i class="far fa-calendar"></i> 07/2022 – 09/2022</span>
+                <div class="timeline-content">
+                    <h3>Business Intelligence Developer</h3>
+                    <div class="company"><i class="fas fa-building"></i> Deltasoft International | Tunisia, Tunis, Ariana</div>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; font-style: italic;">Summer Internship</p>
+                    <ul>
+                        <li>Worked on an international cars database project</li>
+                        <li>Created a Power BI application for automating key performance indicators using Microsoft Dynamics</li>
+                        <li>Managed Data Warehouses using SSIS, SSAS, and SSRS</li>
+                        <li>Created Microsoft Dynamics Pages using AL language</li>
+                    </ul>
+                    <div class="tools">
+                        <span class="tool-tag">Power BI</span>
+                        <span class="tool-tag">Microsoft Dynamics</span>
+                        <span class="tool-tag">Microsoft AL</span>
+                        <span class="tool-tag">SSIS</span>
+                        <span class="tool-tag">SSAS</span>
+                        <span class="tool-tag">SSRS</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item animate-in">
+                <span class="timeline-date"><i class="far fa-calendar"></i> 02/2021 – 06/2021</span>
+                <div class="timeline-content">
+                    <h3>Full Stack Web Developer</h3>
+                    <div class="company"><i class="fas fa-building"></i> Silver International | Tunisia, Tunis, Lac</div>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; font-style: italic;">End of Studies Licence Internship</p>
+                    <ul>
+                        <li>Developed and created a complete E-commerce website</li>
+                        <li>Created Front End pages using ReactJS with responsive design</li>
+                        <li>Set up the Back-End using MongoDB and Node.js</li>
+                        <li>Linked front and back parts using Redux for state management</li>
+                    </ul>
+                    <div class="tools">
+                        <span class="tool-tag">React.js</span>
+                        <span class="tool-tag">Node.js</span>
+                        <span class="tool-tag">MongoDB</span>
+                        <span class="tool-tag">Redux</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="section-header animate-in">
+            <h2><i class="fas fa-project-diagram"></i> Projects</h2>
+            <p>A selection of my technical projects from GitHub and academic work</p>
+            <div class="section-line"></div>
+        </div>
+        <div class="projects-filter animate-in">
+            <button class="filter-btn active" onclick="filterProjects('all')">All</button>
+            <button class="filter-btn" onclick="filterProjects('ai')">AI / ML</button>
+            <button class="filter-btn" onclick="filterProjects('web')">Web</button>
+            <button class="filter-btn" onclick="filterProjects('mobile')">Mobile</button>
+            <button class="filter-btn" onclick="filterProjects('other')">Other</button>
+        </div>
+        <div class="projects-grid" id="projectsGrid">
+            <!-- AI/ML Projects -->
+            <div class="project-card" data-category="ai">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-brain"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/youssefchaker/Lung-Image-Classifier" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <h3>Lung Image Classifier</h3>
+                    <p>Deep learning-based web application to classify lung X-ray images, aiding in the detection of COVID-19, Pneumonia, and Normal cases using CNN architectures.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">TensorFlow</span>
+                        <span class="project-tag">Keras</span>
+                        <span class="project-tag">Flask</span>
+                        <span class="project-tag">CNN</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="ai">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-cut"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/youssefchaker/AI-haircut-generator" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <h3>AI Haircut Generator</h3>
+                    <p>AI-powered web application that generates photorealistic haircut images based on user-specified attributes using a public AI image-generation API.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Flask</span>
+                        <span class="project-tag">RESTful API</span>
+                        <span class="project-tag">AI Image Gen</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="ai">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-file-invoice"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/youssefchaker/TimeCard-OCR-Processor" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <h3>Time Card OCR Processor</h3>
+                    <p>Python application that automates extraction of structured data from timecard PDFs using OCR, enhancing image quality and converting to CSV format.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Tesseract OCR</span>
+                        <span class="project-tag">OpenCV</span>
+                        <span class="project-tag">FastAPI</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="ai">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-robot"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/youssefchaker/bot_text-voice_recognition" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <h3>Bot Text-Voice Recognition</h3>
+                    <p>Intelligent bot system with text and voice recognition capabilities for interactive automation and assistance.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Voice Recognition</span>
+                        <span class="project-tag">NLP</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="ai">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-car"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/youssefchaker/Expert-system-for-choosing-cars" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <h3>Expert System for Choosing Cars</h3>
+                    <p>AI expert system that recommends suitable cars based on user preferences and criteria using rule-based reasoning.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Expert Systems</span>
+                        <span class="project-tag">AI</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web Projects -->
+            <div class="project-card" data-category="web">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fab fa-youtube"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/youssefchaker/Youtube-Clipper-V2" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <h3>YouTube Clipper V2</h3>
+                    <p>Advanced tool for clipping and processing YouTube video content with enhanced features and user interface.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">Web APIs</span>
+                        <span class="project-tag">Video Processing</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="web">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-utensils"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/youssefchaker/Restaurant-web-application" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <h3>Restaurant Web Application</h3>
+                    <p>Modern restaurant website built with Angular featuring menu management, reservation system, and responsive design.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Angular</span>
+                        <span class="project-tag">TypeScript</span>
+                        <span class="project-tag">CSS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="web">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-shopping-cart"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/youssefchaker/Retro-Game-Store" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <h3>Retro Game Store</h3>
+                    <p>Front-end web application for a retro games store with nostalgic design and product showcase features.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">EJS</span>
+                        <span class="project-tag">Node.js</span>
+                        <span class="project-tag">CSS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="web">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-shopping-bag"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/youssefchaker/Centre_E-comerce_PFE" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <h3>Centre E-commerce PFE</h3>
+                    <p>End-of-studies project for an e-commerce platform with full shopping functionality and admin management.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">CSS</span>
+                        <span class="project-tag">Web</span>
+                        <span class="project-tag">E-commerce</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="web">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-music"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/youssefchaker/YouTube-Audio-Downloader" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <h3>YouTube Audio Downloader</h3>
+                    <p>Python utility for downloading and processing audio from YouTube videos with format conversion options.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Audio Processing</span>
+                        <span class="project-tag">Web Scraping</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="web">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fab fa-instagram"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/youssefchaker/insta_content_manager" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <h3>Instagram Content Manager</h3>
+                    <p>Flask-based web application to automate and schedule Instagram content publishing with background scheduler and content queue.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Flask</span>
+                        <span class="project-tag">SQLAlchemy</span>
+                        <span class="project-tag">SQLite</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="web">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-robot"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/youssefchaker/Instagram-bot-automation" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <h3>Instagram Bot Automation</h3>
+                    <p>Automation bot for Instagram interactions and content management using Python scripting.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Automation</span>
+                        <span class="project-tag">Bot</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Projects -->
+            <div class="project-card" data-category="mobile">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-radio"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/youssefchaker/Radio-Hub-TN" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <h3>Radio Hub TN</h3>
+                    <p>Flutter application serving as a centralized hub for Tunisian radio stations with live audio and video streaming.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Flutter</span>
+                        <span class="project-tag">Firebase</span>
+                        <span class="project-tag">Provider</span>
+                        <span class="project-tag">Just Audio</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="mobile">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-globe"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/youssefchaker/Country-Surfing" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <h3>Country Surfing</h3>
+                    <p>Educational Flutter app for testing and improving knowledge of global geography through interactive quizzes and timed challenges.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Flutter</span>
+                        <span class="project-tag">Dart</span>
+                        <span class="project-tag">Firebase</span>
+                        <span class="project-tag">Provider</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Projects -->
+            <div class="project-card" data-category="other">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-home"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/youssefchaker/Smart-House-Simulation" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <h3>Smart House Simulation</h3>
+                    <p>Java-based simulation of a smart home system with automated controls and IoT device management.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Java</span>
+                        <span class="project-tag">IoT</span>
+                        <span class="project-tag">Simulation</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="other">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-cogs"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/youssefchaker/Automating-The-StackCom-Layer-Configuration" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <h3>Automating StackCom Layer Configuration</h3>
+                    <p>Automation suite for configuring and verifying automotive communication stack layers with GUI interfaces.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">AUTOSAR</span>
+                        <span class="project-tag">Automation</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="other">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-microchip"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/youssefchaker/mini-CNC-plotte-machine" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <h3>Mini CNC Plotter Machine</h3>
+                    <p>G-code based mini CNC plotter machine project for automated drawing and engraving tasks.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">G-code</span>
+                        <span class="project-tag">CNC</span>
+                        <span class="project-tag">Hardware</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="other">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/youssefchaker/seminars-management-application" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <h3>Seminars Management Application</h3>
+                    <p>Java application for managing seminars, scheduling, and participant registration.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Java</span>
+                        <span class="project-tag">Management</span>
+                        <span class="project-tag">Scheduling</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="other">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-sitemap"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/youssefchaker/Dictionary_Tree_Project" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <h3>Dictionary Tree Project</h3>
+                    <p>C-based implementation of dictionary data structure using tree algorithms for efficient word storage and retrieval.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">C</span>
+                        <span class="project-tag">Data Structures</span>
+                        <span class="project-tag">Algorithms</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="other">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-tasks"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/youssefchaker/process-scheduling-using-different-algorithms" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <h3>Process Scheduling Algorithms</h3>
+                    <p>C implementation of various CPU process scheduling algorithms with visualization and comparison features.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">C</span>
+                        <span class="project-tag">OS</span>
+                        <span class="project-tag">Algorithms</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="web">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-thermometer-half"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/youssefchaker/temparture-and-humidity-showcase" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <h3>Temperature & Humidity Showcase</h3>
+                    <p>IoT dashboard for displaying real-time temperature and humidity sensor data with visual charts.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">IoT</span>
+                        <span class="project-tag">Dashboard</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="section-header animate-in">
+            <h2><i class="fas fa-cogs"></i> Skills</h2>
+            <p>Technologies and tools I work with</p>
+            <div class="section-line"></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-category animate-in">
+                <h3><i class="fas fa-brain"></i> Artificial Intelligence</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Data Preprocessing</span>
+                    <span class="skill-item">Machine Learning</span>
+                    <span class="skill-item">Natural Language Processing</span>
+                    <span class="skill-item">Deep Learning</span>
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">Flask</span>
+                    <span class="skill-item">R</span>
+                    <span class="skill-item">Roboflow</span>
+                    <span class="skill-item">YOLO</span>
+                    <span class="skill-item">TensorFlow</span>
+                    <span class="skill-item">Keras</span>
+                    <span class="skill-item">OpenCV</span>
+                    <span class="skill-item">Tesseract OCR</span>
+                </div>
+            </div>
+            <div class="skill-category animate-in">
+                <h3><i class="fas fa-code"></i> Web Development</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Node.js</span>
+                    <span class="skill-item">Next.js</span>
+                    <span class="skill-item">React.js</span>
+                    <span class="skill-item">Angular</span>
+                    <span class="skill-item">Redux</span>
+                    <span class="skill-item">JavaScript</span>
+                    <span class="skill-item">TypeScript</span>
+                    <span class="skill-item">HTML/CSS</span>
+                    <span class="skill-item">EJS</span>
+                    <span class="skill-item">RESTful APIs</span>
+                    <span class="skill-item">FastAPI</span>
+                </div>
+            </div>
+            <div class="skill-category animate-in">
+                <h3><i class="fas fa-mobile-alt"></i> Mobile Development</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Flutter</span>
+                    <span class="skill-item">Dart</span>
+                    <span class="skill-item">Provider</span>
+                    <span class="skill-item">Firebase</span>
+                    <span class="skill-item">Just Audio</span>
+                    <span class="skill-item">UI/UX</span>
+                </div>
+            </div>
+            <div class="skill-category animate-in">
+                <h3><i class="fas fa-database"></i> Databases</h3>
+                <div class="skill-list">
+                    <span class="skill-item">MongoDB</span>
+                    <span class="skill-item">Firebase</span>
+                    <span class="skill-item">MySQL</span>
+                    <span class="skill-item">Microsoft Access</span>
+                    <span class="skill-item">SQLAlchemy</span>
+                    <span class="skill-item">SQLite</span>
+                </div>
+            </div>
+            <div class="skill-category animate-in">
+                <h3><i class="fas fa-chart-line"></i> Business Intelligence</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Power BI</span>
+                    <span class="skill-item">Microsoft Dynamics</span>
+                    <span class="skill-item">SSIS</span>
+                    <span class="skill-item">SSAS</span>
+                    <span class="skill-item">SSRS</span>
+                    <span class="skill-item">Microsoft AL</span>
+                </div>
+            </div>
+            <div class="skill-category animate-in">
+                <h3><i class="fas fa-server"></i> DevOps & Tools</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Docker</span>
+                    <span class="skill-item">Kubernetes</span>
+                    <span class="skill-item">n8n</span>
+                    <span class="skill-item">GitHub</span>
+                    <span class="skill-item">GitLab</span>
+                    <span class="skill-item">Jira</span>
+                    <span class="skill-item">PM2</span>
+                    <span class="skill-item">SSH</span>
+                </div>
+            </div>
+            <div class="skill-category animate-in">
+                <h3><i class="fas fa-car"></i> Automotive & Embedded</h3>
+                <div class="skill-list">
+                    <span class="skill-item">AUTOSAR</span>
+                    <span class="skill-item">CAN</span>
+                    <span class="skill-item">StackCom Validation</span>
+                    <span class="skill-item">Nvidia CUDA</span>
+                    <span class="skill-item">Milestone XProtect</span>
+                </div>
+            </div>
+            <div class="skill-category animate-in">
+                <h3><i class="fas fa-laptop-code"></i> Programming Languages</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">JavaScript</span>
+                    <span class="skill-item">Java</span>
+                    <span class="skill-item">C</span>
+                    <span class="skill-item">C#</span>
+                    <span class="skill-item">Dart</span>
+                    <span class="skill-item">TypeScript</span>
+                    <span class="skill-item">HTML/CSS</span>
+                    <span class="skill-item">G-code</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates -->
+    <section id="certificates">
+        <div class="section-header animate-in">
+            <h2><i class="fas fa-certificate"></i> Certificates</h2>
+            <p>Professional certifications and achievements</p>
+            <div class="section-line"></div>
+        </div>
+        <div class="certs-grid">
+            <div class="cert-card animate-in">
+                <div class="cert-icon"><i class="fab fa-microsoft"></i></div>
+                <div class="cert-content">
+                    <h3>Microsoft Certified: Azure AI Fundamentals</h3>
+                    <p>Machine Learning (ML) and Artificial Intelligence (AI) concepts and related Microsoft Azure services.</p>
+                    <span class="cert-badge">Microsoft</span>
+                </div>
+            </div>
+            <div class="cert-card animate-in">
+                <div class="cert-icon"><i class="fab fa-microsoft"></i></div>
+                <div class="cert-content">
+                    <h3>Microsoft Certified: Power Platform Fundamentals</h3>
+                    <p>Automating business processes, analyzing data to produce business insights, and creating simple app experiences.</p>
+                    <span class="cert-badge">Microsoft</span>
+                </div>
+            </div>
+            <div class="cert-card animate-in">
+                <div class="cert-icon"><i class="fas fa-graduation-cap"></i></div>
+                <div class="cert-content">
+                    <h3>Machine Learning Specialization</h3>
+                    <p>Supervised Machine Learning (Regression & Classification), Advanced Learning Algorithms, Unsupervised Learning, Recommenders, Reinforcement Learning.</p>
+                    <span class="cert-badge">Coursera / Stanford</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <div class="section-header animate-in">
+            <h2><i class="fas fa-university"></i> Education</h2>
+            <p>Academic background and qualifications</p>
+            <div class="section-line"></div>
+        </div>
+        <div class="edu-grid">
+            <div class="edu-card animate-in">
+                <div class="edu-date"><i class="far fa-calendar"></i> 2021 – 2024</div>
+                <h3>Software Engineering in Computer Science</h3>
+                <div class="edu-school"><i class="fas fa-university"></i> Higher Institute Of Computer Science, Ariana — Tunis</div>
+                <p class="edu-desc">National Diploma in Software Development Engineering. Curriculum covers programming, algorithms, data structures, computer architecture, software development, hands-on projects, labs, workshops and internships.</p>
+            </div>
+            <div class="edu-card animate-in">
+                <div class="edu-date"><i class="far fa-calendar"></i> 2018 – 2021</div>
+                <h3>Fundamental Licence in Computer Science</h3>
+                <div class="edu-school"><i class="fas fa-university"></i> Higher Institute Of Computer Science, Ariana — Tunis</div>
+                <p class="edu-desc">Fundamental degree covering mathematics, computer science, algorithms, data structures, principles of computing and technical courses, with hands-on experience in internships and projects.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV View -->
+    <section id="cv">
+        <div class="section-header animate-in">
+            <h2><i class="fas fa-file-pdf"></i> Curriculum Vitae</h2>
+            <p>View or download my complete CV</p>
+            <div class="section-line"></div>
+        </div>
+        <div class="cv-container animate-in">
+            <div class="cv-toolbar">
+                <h3><i class="fas fa-file-alt"></i> Youssef_Chaker_CV.pdf</h3>
+                <a href="./Youssef_Chaker_CV.pdf" download class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">
+                    <i class="fas fa-download"></i> Download CV
+                </a>
+            </div>
+            <iframe class="cv-frame" src="./Youssef_Chaker_CV.pdf" title="Youssef Chaker CV">
+                <div class="cv-fallback">
+                    <i class="fas fa-file-pdf"></i>
+                    <p>Unable to display PDF. Please download it using the button above.</p>
+                </div>
+            </iframe>
+        </div>
+        <p style="text-align: center; color: var(--text-muted); margin-top: 1rem; font-size: 0.9rem;">
+            <i class="fas fa-info-circle"></i> Make sure to upload your CV PDF file as <code style="background: var(--bg-card); padding: 0.2rem 0.5rem; border-radius: 4px;">Youssef_Chaker_CV.pdf</code> in the same folder as this HTML file.
+        </p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="section-header animate-in">
+            <h2><i class="fas fa-paper-plane"></i> Contact</h2>
+            <p>Let's get in touch</p>
+            <div class="section-line"></div>
+        </div>
+        <div class="contact-grid animate-in">
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <a href="mailto:youssefchaker13@gmail.com">youssefchaker13@gmail.com</a>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-phone"></i>
+                <h3>Phone</h3>
+                <span>+216 28 32 68 62</span>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Location</h3>
+                <span>Tunis, Ariana, Tunisia</span>
+            </div>
+            <div class="contact-card">
+                <i class="fab fa-linkedin"></i>
+                <h3>LinkedIn</h3>
+                <a href="https://linkedin.com/in/youssef-chaker-529097175" target="_blank">youssef-chaker</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://github.com/youssefchaker" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/youssef-chaker-529097175" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:youssefchaker13@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p>  Youssef Chaker. Built with <i class="fas fa-heart" style="color: var(--primary);"></i> and deployed on GitHub Pages.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Navbar background on scroll
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-in, .timeline-item, .project-card, .cert-card, .edu-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Project filtering
+        function filterProjects(category) {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Filter cards
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                    setTimeout(() => {
+                        card.classList.add('visible');
+                    }, 50);
+                } else {
+                    card.style.display = 'none';
+                    card.classList.remove('visible');
+                }
+            });
+        }
+
+        // Initialize all project cards as visible
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.project-card').forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('visible');
+                }, index * 50);
+            });
+        });
+    </script>
+</body>
+</html>
