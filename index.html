@@ -107,6 +107,7 @@
             color: var(--accent);
             text-decoration: none;
             letter-spacing: -0.5px;
+            margin-left: -0.5rem;
         }
 
         .nav-links {
@@ -997,7 +998,7 @@
         }
 
         footer {
-            text-align: left;
+            text-align: center;
             padding: 4rem 2rem 3rem;
             border-top: 1px solid var(--border);
             color: var(--text-muted);
@@ -1008,6 +1009,7 @@
 
         footer .social-links {
             margin-bottom: 1.5rem;
+            justify-content: center;
         }
 
         @media (max-width: 768px) {
@@ -2066,7 +2068,7 @@
                     class="fab fa-linkedin-in"></i></a>
             <a href="mailto:youssefchaker13@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
-        <p> Youssef Chaker. Built with care.</p>
+        <p>Youssef Chaker - 2026</p>
     </footer>
 
     <script>
@@ -2099,11 +2101,24 @@
         }
 
         document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', (e) => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+                if (href === '#') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    const target = document.querySelector(href);
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                }
                 document.getElementById('navLinks').classList.remove('active');
                 navLinks.forEach(l => l.classList.remove('active'));
-                e.target.classList.add('active');
+                this.classList.add('active');
             });
+        });
+
+        document.querySelector('.logo').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         const sections = document.querySelectorAll('section[id]');
