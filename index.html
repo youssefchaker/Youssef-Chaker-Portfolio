@@ -2250,7 +2250,7 @@
         }
 
         function filenameToCaption(file) {
-            return 'Photo ' + file.replace(/\.[^.]+$/, '');
+            return '';
         }
 
         async function renderGallery() {
@@ -2261,7 +2261,7 @@
             grid.innerHTML = '';
 
             if (!files.length) {
-                grid.innerHTML = '<p class="gallery-empty">No photos found. Add numbered PNGs (1.png, 2.png, …) to the /gallery folder.</p>';
+                grid.innerHTML = '';
                 return;
             }
 
