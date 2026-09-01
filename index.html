@@ -1012,6 +1012,128 @@
             justify-content: center;
         }
 
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .gallery-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s;
+            aspect-ratio: 4 / 3;
+        }
+
+        .gallery-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-item:hover {
+            border-color: var(--accent);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 0.6rem 0.85rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+            color: var(--text-primary);
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.5px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+
+        .gallery-empty {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 10, 10, 0.92);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1.5rem;
+        }
+
+        .lightbox-overlay.active {
+            display: flex;
+        }
+
+        .lightbox-overlay img {
+            max-width: 100%;
+            max-height: 100%;
+            border: 1px solid var(--border-light);
+            background: var(--bg-card);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            width: 44px;
+            height: 44px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .lightbox-close:hover {
+            background: var(--accent);
+            color: var(--bg);
+            border-color: var(--accent);
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -1102,6 +1224,7 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#certificates">Certificates</a></li>
                 <li><a href="#education">Education</a></li>
+                <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#cv">CV</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -2011,6 +2134,15 @@
         </div>
     </section>
 
+    <section id="gallery">
+        <div class="section-header animate-in">
+            <h2><i class="fas fa-images"></i> Gallery</h2>
+            <p>Photos from internships and projects</p>
+            <div class="section-line"></div>
+        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
     <section id="cv">
         <div class="section-header animate-in">
             <h2><i class="fas fa-file-pdf"></i> Curriculum Vitae</h2>
@@ -2071,7 +2203,131 @@
         <p>Youssef Chaker - 2026</p>
     </footer>
 
+    <div class="lightbox-overlay" id="lightboxOverlay">
+        <button class="lightbox-close" id="lightboxClose" title="Close"><i class="fas fa-times"></i></button>
+        <img id="lightboxImg" src="" alt="">
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+
     <script>
+        // ---------------------------------------------------------------
+        // GALLERY AUTO-LOADING (sequential numbered files)
+        // Images live at ./gallery/1.png, ./gallery/2.png, ./gallery/3.png ...
+        // No manifest or directory listing needed: the browser just probes
+        // each number in order and keeps whatever actually loads. Add or
+        // remove numbered PNGs in the folder and the grid updates itself
+        // on next page load — nothing else to maintain.
+        // ---------------------------------------------------------------
+        const GALLERY_EXT = 'png';
+        const GALLERY_MAX_CHECK = 300;   // upper bound, just a safety cap
+        const GALLERY_MAX_GAP = 5;       // stop after this many consecutive misses
+
+        function probeImage(src) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.onload = () => resolve(true);
+                img.onerror = () => resolve(false);
+                img.src = src;
+            });
+        }
+
+        async function getGalleryFilenames() {
+            const found = [];
+            let misses = 0;
+
+            for (let i = 1; i <= GALLERY_MAX_CHECK; i++) {
+                const file = `${i}.${GALLERY_EXT}`;
+                const ok = await probeImage(`./gallery/${file}`);
+                if (ok) {
+                    found.push(file);
+                    misses = 0;
+                } else {
+                    misses++;
+                    if (misses >= GALLERY_MAX_GAP) break;
+                }
+            }
+            return found;
+        }
+
+        function filenameToCaption(file) {
+            return 'Photo ' + file.replace(/\.[^.]+$/, '');
+        }
+
+        async function renderGallery() {
+            const grid = document.getElementById('galleryGrid');
+            grid.innerHTML = '<p class="gallery-empty">Loading photos…</p>';
+
+            const files = await getGalleryFilenames();
+            grid.innerHTML = '';
+
+            if (!files.length) {
+                grid.innerHTML = '<p class="gallery-empty">No photos found. Add numbered PNGs (1.png, 2.png, …) to the /gallery folder.</p>';
+                return;
+            }
+
+            files.forEach((file) => {
+                const src = `./gallery/${file}`;
+                const caption = filenameToCaption(file);
+
+                const cell = document.createElement('div');
+                cell.className = 'gallery-item';
+
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = caption;
+                img.loading = 'lazy';
+                img.addEventListener('error', () => cell.remove());
+
+                const capEl = document.createElement('div');
+                capEl.className = 'gallery-caption';
+                capEl.textContent = caption;
+
+                cell.appendChild(img);
+                cell.appendChild(capEl);
+                cell.addEventListener('click', () => openLightbox(src, caption));
+
+                grid.appendChild(cell);
+
+                const obs = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+                obs.observe(cell);
+            });
+        }
+
+        function openLightbox(src, caption) {
+            const overlay = document.getElementById('lightboxOverlay');
+            const img = document.getElementById('lightboxImg');
+            const capEl = document.getElementById('lightboxCaption');
+            img.src = src;
+            img.alt = caption;
+            capEl.textContent = caption;
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const overlay = document.getElementById('lightboxOverlay');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+            document.getElementById('lightboxImg').src = '';
+        }
+
+        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+        document.getElementById('lightboxOverlay').addEventListener('click', (e) => {
+            if (e.target.id === 'lightboxOverlay') closeLightbox();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        renderGallery();
+
         function downloadCV() {
             const pdfUrl = './Youssef_Chaker_CV.pdf';
             const fileName = 'Youssef_Chaker_CV.pdf';
