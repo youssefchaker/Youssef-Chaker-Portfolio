@@ -2276,7 +2276,7 @@
                 img.src = src;
                 img.alt = caption;
                 img.loading = 'lazy';
-                img.addEventListener('error', () => cell.remove());
+                img.addEventListener('error ', () => cell.remove());
 
                 const capEl = document.createElement('div');
                 capEl.className = 'gallery-caption';
