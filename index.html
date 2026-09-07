@@ -108,6 +108,7 @@
             text-decoration: none;
             letter-spacing: -0.5px;
             margin-left: -0.5rem;
+            margin-right: 1.75rem;
         }
 
         .nav-links {
@@ -1267,10 +1268,10 @@
         </div>
         <div class="timeline">
             <div class="timeline-item animate-in">
-                <span class="timeline-date">11/2025 – Present</span>
+                <span class="timeline-date">11/2025 – 09/2026</span>
                 <div class="timeline-content">
                     <h3>Back End Engineer</h3>
-                    <div class="company"><i class="fas fa-building"></i> Primini — Price Comparator | Kram Tunis,
+                    <div class="company"><i class="fas fa-building"></i> Primini -- Price Comparator | Kram Tunis,
                         Tunisia</div>
                     <ul>
                         <li>Maintained and developed new features for Primini, a price comparison platform operating in
@@ -1297,7 +1298,7 @@
                 <span class="timeline-date">11/2024 – 10/2025</span>
                 <div class="timeline-content">
                     <h3>Full Stack Engineer</h3>
-                    <div class="company"><i class="fas fa-building"></i> MagicPrices — Price Comparator | Kram Tunis,
+                    <div class="company"><i class="fas fa-building"></i> MagicPrices -- Price Comparator | Kram Tunis,
                         Tunisia</div>
                     <ul>
                         <li>Developed and delivered new platform features for Magic Prices, a multi-regional price
@@ -2074,7 +2075,7 @@
                 </div>
                 <div class="cert-content">
                     <h3>Microsoft Dynamics 365 Fundamentals (ERP)</h3>
-                    <p>Finance and Operations Apps — ERP fundamentals including financial management and supply chain
+                    <p>Finance and Operations Apps -- ERP fundamentals including financial management and supply chain
                         concepts.</p>
                     <span class="cert-badge">Microsoft</span>
                 </div>
@@ -2108,7 +2109,8 @@
             <div class="edu-card animate-in">
                 <div class="edu-date"><i class="far fa-calendar"></i> 2021 – 2024</div>
                 <h3>Software Engineering in Computer Science</h3>
-                <div class="edu-school"><i class="fas fa-university"></i> Higher Institute Of Computer Science, Ariana —
+                <div class="edu-school"><i class="fas fa-university"></i> Higher Institute Of Computer Science, Ariana
+                    --
                     Tunis</div>
                 <p class="edu-desc">National Diploma in Software Development Engineering. Curriculum covers programming,
                     algorithms, data structures, computer architecture, software development, hands-on projects, labs,
@@ -2117,7 +2119,8 @@
             <div class="edu-card animate-in">
                 <div class="edu-date"><i class="far fa-calendar"></i> 2018 – 2021</div>
                 <h3>Fundamental License in Computer Science</h3>
-                <div class="edu-school"><i class="fas fa-university"></i> Higher Institute Of Computer Science, Ariana —
+                <div class="edu-school"><i class="fas fa-university"></i> Higher Institute Of Computer Science, Ariana
+                    --
                     Tunis</div>
                 <p class="edu-desc">Fundamental degree covering mathematics, computer science, algorithms, data
                     structures, principles of computing and technical courses, with hands-on experience in internships
@@ -2210,18 +2213,9 @@
     </div>
 
     <script>
-        // ---------------------------------------------------------------
-        // GALLERY AUTO-LOADING (sequential numbered files)
-        // Images live at ./gallery/1.png, ./gallery/2.png, ./gallery/3.png ...
-        // No manifest or directory listing needed: the browser just probes
-        // each number in order and keeps whatever actually loads. Add or
-        // remove numbered PNGs in the folder and the grid updates itself
-        // on next page load — nothing else to maintain.
-        // ---------------------------------------------------------------
         const GALLERY_EXT = 'png';
-        const GALLERY_MAX_CHECK = 300;   // upper bound, just a safety cap
-        const GALLERY_MAX_GAP = 5;       // stop after this many consecutive misses
-
+        const GALLERY_MAX_CHECK = 300;
+        const GALLERY_MAX_GAP = 5;
         function probeImage(src) {
             return new Promise((resolve) => {
                 const img = new Image();
@@ -2250,7 +2244,7 @@
         }
 
         function filenameToCaption(file) {
-            return '';
+            return 'Photo ' + file.replace(/\.[^.]+$/, '');
         }
 
         async function renderGallery() {
@@ -2261,7 +2255,7 @@
             grid.innerHTML = '';
 
             if (!files.length) {
-                grid.innerHTML = '';
+                grid.innerHTML = '<p class="gallery-empty">No photos found. Add numbered PNGs (1.png, 2.png, …) to the /gallery folder.</p>';
                 return;
             }
 
@@ -2276,7 +2270,7 @@
                 img.src = src;
                 img.alt = caption;
                 img.loading = 'lazy';
-                img.addEventListener('error ', () => cell.remove());
+                img.addEventListener('error', () => cell.remove());
 
                 const capEl = document.createElement('div');
                 capEl.className = 'gallery-caption';
